@@ -1,0 +1,27 @@
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: Ruchi1@sql
+      MYSQL_DATABASE: workflowdb
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - workflow-network
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"  # Default Redis port
+    networks:
+      - workflow-network
+
+networks:
+  workflow-network:
+    driver: bridge
+
+volumes:
+  mysql-data:
+    driver: local

@@ -1,0 +1,111 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 1-create-workflows-table
+      author: ruchi
+      changes:
+        - createTable:
+            tableName: workflows
+            columns:
+              - column:
+                  name: workflow_id
+                  type: BINARY(16)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: TEXT
+                  constraints:
+                    nullable: true
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+                  defaultValueComputed: CURRENT_TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: due_date
+                  type: DATE
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: VARCHAR(20)
+                  defaultValue: "ACTIVE"
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 2-create-triggers-table
+      author: ruchi
+      changes:
+        - createTable:
+            tableName: triggers
+            columns:
+              - column:
+                  name: trigger_id
+                  type: BINARY(16)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: workflow_id
+                  type: BINARY(16)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email_to
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: VARCHAR(20)
+                  defaultValue: "PENDING"
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 3-create-actions-table
+      author: ruchi
+      changes:
+        - createTable:
+            tableName: actions
+            columns:
+              - column:
+                  name: action_id
+                  type: BINARY(16)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: trigger_id
+                  type: BINARY(16)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email_to
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email_subject
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email_body
+                  type: TEXT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: execution_date
+                  type: DATE
+                  constraints:
+                    nullable: false
