@@ -1,7 +1,7 @@
 # Customizable Workflow Automation Platform
 
 ## Description
-This is a backend project designed to enable users to create customizable workflows with automated email reminders. Users can define triggers and actions through configuration files (e.g., JSON or YAML). The platform is lightweight and tailored for small teams or individuals who want a flexible, automated workflow system.
+This is a backend project designed to enable users to create customizable workflows with automated email reminders. Users can define workflows through configuration files (e.g., JSON or YAML). The platform is lightweight and tailored for small teams or individuals who want a flexible, automated workflow system.
 
 ### Key Features:
 - Create and manage customizable workflows.
